@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://signin.kontomatik.com/assets/signin-widget.js">
+  </script>
+</head>
+<body>
+  <div id="kontomatik"></div>
+
+  <script>
+    embedKontomatik({
+      client: 'YOUR_CLIENT_ID', // TODO: replace with your client id
+      divId: 'kontomatik',
+      onSuccess: function() {
+        /*
+          End user successfully signed in to the bank.
+          Kontomatik started importing data in the background.
+          It will take from a few seconds to a few minutes.
+          To simplify things we assume everything will go well with the data import.
+          Lets show the finishing message to the user already!
+        */
+        // TODO: customize it to your needs
+        var kontomatikDiv = document.getElementById("kontomatik");
+        kontomatikDiv.innerHTML = "Thank you! We will review your application and get back to you shortly.";
+      },
+      country: 'es',  // TODO: pick your country
+      locale: 'en',   // TODO: pick your locale
+      ownerExternalId: null,  // TODO: replace null with anything that will allow you to match the Insight financial reports with your end user
+      showFavicons: true,
+      autoImport: {
+        sinceMonths: 3
+      }      
+    });
+  </script>
+</body>
+</html>
